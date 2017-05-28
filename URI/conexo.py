@@ -1,3 +1,5 @@
+# https://www.urionlinejudge.com.br/judge/pt/problems/view/1082
+
 from collections import defaultdict
 
 casos_teste = int(raw_input())

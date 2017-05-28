@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # https://www.urionlinejudge.com.br/judge/pt/problems/view/1023
 
 from collections import defaultdict

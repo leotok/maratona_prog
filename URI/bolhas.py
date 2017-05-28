@@ -1,3 +1,5 @@
+# https://www.urionlinejudge.com.br/judge/pt/problems/view/1088
+
 while True:
 	read = map(int, raw_input().split())
 	n = read[0]

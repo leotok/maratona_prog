@@ -1,3 +1,5 @@
+# https://www.urionlinejudge.com.br/judge/pt/problems/view/1062
+
 from collections import deque
 
 def debug():
