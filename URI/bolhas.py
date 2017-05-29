@@ -12,7 +12,7 @@ while True:
 
 	while i < len(read):
 		if i + 1 != read[i]:
-			qtd_mov += 2 * (read[read[i] - 1] - read[i]) - 1
+			qtd_mov += 2 * (read[i] - read[read[i] - 1]) - 1
 			read[read[i] - 1], read[i] = read[i], read[read[i] - 1]
 		else:
 			i += 1
