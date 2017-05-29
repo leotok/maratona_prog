@@ -47,9 +47,11 @@ while n:
                     break
         else:
             while not isEmpty(op_stack) and order[op_stack[-1]] >= order[equation[i]]:
-                op = op_stack.pop()
-                if op not in ['(', ')']:
-                    post_fix.append(op)
+                if op_stack[-1] not in ['(', ')']:
+                    post_fix.append(op_stack.pop())
+                else:
+                    break
+
             op_stack.append(equation[i])
 
     while not isEmpty(op_stack):
