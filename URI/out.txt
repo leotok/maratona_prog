@@ -1,3 +1,10 @@
-Optimal train swapping takes 38 swaps.
-Optimal train swapping takes 5 swaps.
-Optimal train swapping takes 44 swaps.
+0
+6
+6
+0
+Nao e possivel entregar a carta
+
+10
+Nao e possivel entregar a carta
+0
+

@@ -1,3 +1,6 @@
+# https://www.urionlinejudge.com.br/judge/pt/problems/view/1148
+# http://www.gilles-bertrand.com/2014/03/dijkstra-algorithm-python-example-source-code-shortest-path.html
+
 from collections import defaultdict
 
 def bfs_find(u, v, graph):
@@ -21,20 +24,20 @@ def bfs_find(u, v, graph):
 def existe_mao_dupla(u, v, graph):
     return bfs_find(v, u, graph.copy()) and bfs_find(u, v, graph.copy())
     
-def dijkstra(graph,src,dest,visited=None,distances=None,predecessors=None):
+def dijkstra(graph,src,dest,paises,visited=None,distances=None,predecessors=None):
 
     if visited is None:
         visited = []
     if distances is None:
-        distances = {}
+        distances = defaultdict(lambda: float('inf'))
     if predecessors is None:
         predecessors = {}
 
      # a few sanity checks
     if src not in graph:
-        raise TypeError('The root of the shortest path tree cannot be found')
+        return float('inf')
     if dest not in graph:
-        raise TypeError('The target of the shortest path cannot be found')    
+        return float('inf')
     # ending condition
     if src == dest:
         # We build the shortest path and display it
@@ -43,7 +46,7 @@ def dijkstra(graph,src,dest,visited=None,distances=None,predecessors=None):
         while pred != None:
             path.append(pred)
             pred=predecessors.get(pred,None)
-        print('shortest path: '+str(path)+" cost="+str(distances[dest])) 
+        return distances[dest]
     else :     
         # if it is the initial  run, initializes the cost
         if not visited: 
@@ -51,7 +54,10 @@ def dijkstra(graph,src,dest,visited=None,distances=None,predecessors=None):
         # visit the neighbors
         for neighbor in graph[src] :
             if neighbor not in visited:
-                new_distance = distances[src] + graph[src][neighbor]
+                if mesmo_pais(src, neighbor, paises):
+                    new_distance = distances[src]
+                else:
+                    new_distance = distances[src] + graph[src][neighbor]
                 if new_distance < distances.get(neighbor,float('inf')):
                     distances[neighbor] = new_distance
                     predecessors[neighbor] = src
@@ -65,8 +71,13 @@ def dijkstra(graph,src,dest,visited=None,distances=None,predecessors=None):
             if k not in visited:
                 unvisited[k] = distances.get(k,float('inf'))        
         x=min(unvisited, key=unvisited.get)
-        dijkstra(graph,x,dest,visited,distances,predecessors)
+        return dijkstra(graph,x,dest,paises,visited,distances,predecessors)
 
+def mesmo_pais(u, v, paises):
+    if v in paises[u] and u in paises[v]:
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
 
@@ -84,8 +95,6 @@ if __name__ == '__main__':
             graph[x][y] = h
 
         k = int(raw_input())
-        print (graph)
-
         paises = defaultdict(set)
 
         # grafo dos pais, cada componente conexo eh um pais
@@ -93,15 +102,16 @@ if __name__ == '__main__':
             for pais_b, valor in d.items():
                 ret = existe_mao_dupla(pais_a, pais_b, graph)
                 if ret:
-                     paises[pais_a].add(pais_b)
-                     paises[pais_b].add(pais_a)
-
-        print ("paises: ", paises)
-        
-        dijkstra(graph, 1, 2)
+                    paises[pais_a].add(pais_b)
+                    paises[pais_b].add(pais_a)
 
         for _ in xrange(k):
             # dijkstra
             # se agencia no mesmo pais entao gasto eh 0
             u, v = map(int, raw_input().split())
-            
+            ret = dijkstra(graph, u, v, paises)
+            if ret != float('inf'):
+                print ret
+            else:
+                print "Nao e possivel entregar a carta"
+        print
