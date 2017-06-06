@@ -44,7 +44,7 @@ for n in xrange(1, casos_teste + 1):
 			print format_str
 
 	print "%d connected components" % num_conexo
-	if n != casos_teste + 1:
+	if n != casos_teste + 2:
 		print ""
 		
 	casos_teste -= 1

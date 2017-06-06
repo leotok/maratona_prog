@@ -57,4 +57,6 @@ while True:
 				break					
 
 		print "Yes" if resp else "No"
+print ""
+
 
