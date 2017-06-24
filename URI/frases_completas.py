@@ -1,3 +1,5 @@
+# https://www.urionlinejudge.com.br/judge/pt/problems/view/1551
+
 def fCompleta(words):
 	conta=0
 	alpha=map(chr, range(ord("a"), (ord("z")+1))) 

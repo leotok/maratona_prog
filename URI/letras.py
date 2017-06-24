@@ -1,3 +1,5 @@
+# https://www.urionlinejudge.com.br/judge/pt/problems/view/2457
+
 def porcentagem(l, p):
 	return ((l*100.0)/p)
 

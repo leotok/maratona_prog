@@ -1,3 +1,5 @@
+# https://www.urionlinejudge.com.br/judge/pt/problems/view/1287
+
 def friendlyProcessor(s):
 	s=s.replace("l", "1")
 	

@@ -1,3 +1,5 @@
+# https://www.urionlinejudge.com.br/judge/pt/problems/view/2455
+
 P1, C1, P2, C2 = map(int, raw_input().split())
 if P1 * C1 == P2 * C2:
 	print 0

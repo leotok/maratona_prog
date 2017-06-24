@@ -1,8 +1,5 @@
-'''
-Array Hash
-URI Online Judge | 1257
-https://www.urionlinejudge.com.br/judge/en/problems/view/1257
-'''
+# https://www.urionlinejudge.com.br/judge/en/problems/view/1257
+
 def array_hash(ls):
 	cl = 0
 	tot = 0
